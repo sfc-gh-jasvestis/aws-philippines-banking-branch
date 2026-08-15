@@ -1,0 +1,122 @@
+{
+  "title": "Branch Network Optimization & Demand Forecasting",
+  "duration": "4 minutes",
+  "thesis": "Snowflake combines AWS Location Service data with H3 geospatial indexing and ML.FORECAST to optimize Philippine bank branch networks \u2014 identifying underserved areas, predicting demand, and recommending optimal new branch locations",
+  "tabs": [
+    {
+      "id": "executive-cockpit",
+      "persona": {
+        "name": "Conchita Maria Yuchengco",
+        "role": "EVP Branch Banking",
+        "avatar": "\ud83d\udc69\u200d\ud83d\udcbc"
+      },
+      "talking_points": [
+        "850 branches serving 4.2M customers \u2014 average branch generates \u20b118M annual revenue.",
+        "124 branches underperforming (negative ROI) \u2014 47 are consolidation candidates.",
+        "15 provinces identified with population > 500K but zero bank presence."
+      ],
+      "show": [
+        "Point at 850 branches on national map",
+        "Highlight 124 red-status branches",
+        "Show 15 underserved provinces"
+      ],
+      "call_out": "15 provinces with 500K+ population and zero branches \u2014 massive opportunity",
+      "transition": {
+        "next_tab": "geospatial-coverage",
+        "line": "Let's analyze where to expand and where to consolidate."
+      }
+    },
+    {
+      "id": "geospatial-coverage",
+      "persona": {
+        "name": "Alejandro Luis Aboitiz",
+        "role": "Network Planning Director",
+        "avatar": "\ud83d\udc68\u200d\ud83d\udcbb"
+      },
+      "talking_points": [
+        "H3 hexagonal analysis: 62% of Filipino population is within 5km of a bank branch.",
+        "ST_WITHIN analysis: competitor density \u2014 BDO has 3.2x our coverage in CALABARZON.",
+        "Expansion candidates ranked by: unbanked population \u00d7 income level \u00f7 competitor density."
+      ],
+      "show": [
+        "Show H3 coverage heatmap",
+        "Display competitor overlay",
+        "Show expansion candidate ranking table"
+      ],
+      "call_out": "CALABARZON: 16M population, BDO has 3.2x our branches \u2014 close the gap",
+      "transition": {
+        "next_tab": "demand-forecast",
+        "line": "The geospatial data shows where. ML.FORECAST tells us how much demand."
+      }
+    },
+    {
+      "id": "demand-forecast",
+      "persona": {
+        "name": "Conchita Maria Yuchengco",
+        "role": "EVP Branch Banking",
+        "avatar": "\ud83d\udc69\u200d\ud83d\udcbc"
+      },
+      "talking_points": [
+        "ML.FORECAST predicts: Pampanga branches will grow 14% in transactions next year.",
+        "ML.CLASSIFICATION scores 20 proposed locations \u2014 16 predicted profitable within 2 years.",
+        "Digital-first branches: 40% lower operating cost with kiosk + video banker model."
+      ],
+      "show": [
+        "Show demand forecast for Pampanga",
+        "Display viability scores for proposed branches",
+        "Compare branch formats by cost"
+      ],
+      "call_out": "16 of 20 proposed branches predicted profitable in 2 years",
+      "transition": {
+        "next_tab": "ask-ai",
+        "line": "Let the EVP ask the system directly."
+      }
+    },
+    {
+      "id": "ask-ai",
+      "persona": {
+        "name": "Conchita Maria Yuchengco",
+        "role": "EVP Branch Banking",
+        "avatar": "\ud83d\udc69\u200d\ud83d\udcbc"
+      },
+      "talking_points": [
+        "Conchita asks: 'What's the projected revenue for a branch in San Fernando, Pampanga?'",
+        "Cortex Analyst: \u20b124M annual revenue projected based on catchment population and demand model.",
+        "Follow-up: 'What does BSP say about branch banking in rural areas?' \u2014 searches BSP reports."
+      ],
+      "show": [
+        "Type: 'Projected revenue for San Fernando branch?'",
+        "Show analysis result",
+        "Search BSP branch banking reports"
+      ],
+      "call_out": "Two AI modes: SQL + geospatial analytics + BSP regulatory search",
+      "transition": {
+        "next_tab": "architecture",
+        "line": "Every capability \u2014 native Snowflake SQL."
+      }
+    },
+    {
+      "id": "architecture",
+      "persona": {
+        "name": "Conchita Maria Yuchengco",
+        "role": "EVP Branch Banking",
+        "avatar": "\ud83d\udc69\u200d\ud83d\udcbc"
+      },
+      "talking_points": [
+        "Location Service \u2192 H3 aggregation \u2192 catchment analysis \u2192 ML.FORECAST \u2192 expansion scoring.",
+        "H3 + ST_WITHIN replace Amazon Location Service analytics and Redshift Spatial.",
+        "Philippine banking: 55M banked, 51M unbanked. This optimizes 850 branches to serve both."
+      ],
+      "show": [
+        "Walk through architecture diagram",
+        "Show geospatial pipeline",
+        "Toggle dual-build mode"
+      ],
+      "call_out": "H3 geospatial + ML forecasting \u2014 branch network optimization in SQL",
+      "transition": {
+        "next_tab": "",
+        "line": "That's Snowflake and AWS \u2014 better together for Philippine banking."
+      }
+    }
+  ]
+}
