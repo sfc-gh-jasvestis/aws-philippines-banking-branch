@@ -8,7 +8,6 @@ Philippine banking is a tale of two markets: 55 million banked Filipinos cluster
 
 ```mermaid
 flowchart LR
-    SP --> RAW[RAW Tables]
     RAW --> DT[Dynamic Tables]
     DT --> ML[ML Functions]
     DT --> SEARCH[Cortex Search]
