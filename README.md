@@ -116,7 +116,7 @@ Run all scripts including AWS integration. Deploy QuickSight dashboard from `qui
 
 Industry research and Snowflake customer outcomes:
 - **Philippine banking sector assets reached ₱22.4 trillion in 2023** — [BSP](https://www.bsp.gov.ph/SitePages/Statistics/Statistics.aspx)
-- **51 million Filipino adults remain unbanked — largest financial inclusion gap in ASEAN** — [BSP Financial Inclusion Survey](https://www.bsp.gov.ph/SitePages/InclusiveFinance/FinancialInclusion.aspx)
+- **51 million Filipino adults remain unbanked — largest financial inclusion gap in ASEAN** — [BSP Financial Inclusion Survey](https://www.bsp.gov.ph/SitePages/InclusiveFinance/InclusiveFinance.aspx)
 - **Geospatial analytics improves branch location ROI by 30-50%** — [McKinsey Banking](https://www.mckinsey.com/industries/financial-services/our-insights)
 - **Digital-first branch formats reduce operating costs 40-60% vs traditional branches** — [Deloitte Banking](https://www.deloitte.com/global/en/Industries/financial-services/perspectives/banking-industry-outlook.html)
 - **Western Union** (Snowflake customer): processes 1B+ cross-border transactions on Snowflake with real-time compliance and fraud detection -- [snowflake.com/customers/western-union](https://www.snowflake.com/en/customers/all-customers/case-study/western-union/)
