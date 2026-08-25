@@ -8,7 +8,7 @@ USE SCHEMA APP;
 CREATE OR REPLACE NOTIFICATION INTEGRATION aws_philippines_banking_branch_EMAIL_INT
   TYPE = EMAIL
   ENABLED = TRUE
-  ALLOWED_RECIPIENTS = ('jonathan.asvestis@snowflake.com');
+  ALLOWED_RECIPIENTS = ('<YOUR_EMAIL>');
 
 -- Alert: UNDERPERFORM_ALERT
 CREATE OR REPLACE ALERT APP.UNDERPERFORM_ALERT
@@ -22,7 +22,7 @@ IF (EXISTS (
 THEN
   CALL SYSTEM$SEND_EMAIL(
     'aws_philippines_banking_branch_EMAIL_INT',
-    'jonathan.asvestis@snowflake.com',
+    '<YOUR_EMAIL>',
     '[ALERT] Branch Network Optimization & Demand Forecasting: Branch underperforming — consolidation candidate',
     'Branch underperforming — consolidation candidate'
   );
@@ -41,7 +41,7 @@ IF (EXISTS (
 THEN
   CALL SYSTEM$SEND_EMAIL(
     'aws_philippines_banking_branch_EMAIL_INT',
-    'jonathan.asvestis@snowflake.com',
+    '<YOUR_EMAIL>',
     '[ALERT] Branch Network Optimization & Demand Forecasting: Branch demand exceeding capacity — expansion needed',
     'Branch demand exceeding capacity — expansion needed'
   );
