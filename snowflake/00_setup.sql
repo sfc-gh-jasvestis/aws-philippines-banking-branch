@@ -1,16 +1,13 @@
--- ============================================================================
--- Branch Network Optimization & Demand Forecasting
--- Philippine banks operate 12,000+ branches serving 55M banked Filipinos — Snowflake uses H3 geospatial + ST_WITHIN to identify underserved areas, ML.FORECAST to predict branch demand, and optimize branch network expansion.
--- ============================================================================
-USE ROLE ACCOUNTADMIN;
-CREATE DATABASE IF NOT EXISTS BRANCH_NETWORK;
-CREATE WAREHOUSE IF NOT EXISTS BRANCH_WH WAREHOUSE_SIZE = 'MEDIUM' AUTO_SUSPEND = 120 AUTO_RESUME = TRUE;
-USE DATABASE BRANCH_NETWORK;
-CREATE SCHEMA IF NOT EXISTS RAW;
-CREATE SCHEMA IF NOT EXISTS CURATED;
-CREATE SCHEMA IF NOT EXISTS ML;
-CREATE SCHEMA IF NOT EXISTS AI;
-CREATE SCHEMA IF NOT EXISTS SEARCH;
-CREATE SCHEMA IF NOT EXISTS APP;
+-- Generated from generator/demo_specs/aws-philippines-banking-branch.json
+-- Regenerate with: python3 generator/gen_repo_docs.py aws-philippines-banking-branch
+-- This is the schema that is actually deployed for PH_BANKING_BRANCH.
 
-USE WAREHOUSE BRANCH_WH;
+-- PH_BANKING_BRANCH  (Branch Network Optimization & Demand Forecasting)
+-- generated from generator/demo_specs/aws-philippines-banking-branch.json - do not hand-edit
+CREATE DATABASE IF NOT EXISTS PH_BANKING_BRANCH;
+CREATE SCHEMA IF NOT EXISTS PH_BANKING_BRANCH.RAW;
+CREATE SCHEMA IF NOT EXISTS PH_BANKING_BRANCH.CURATED;
+CREATE SCHEMA IF NOT EXISTS PH_BANKING_BRANCH.APP;
+USE DATABASE PH_BANKING_BRANCH;
+
+-- 5 real regions; entity names carry their region so the two always agree
