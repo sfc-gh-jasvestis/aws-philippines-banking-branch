@@ -1,109 +1,82 @@
-# Demo Script: Branch Network Optimization & Demand Forecasting
-## ~4-Minute Recorded Walkthrough
-**Format**: Screen recording with voiceover
-**Target**: Customer meeting / booth loop / social share
-**Narrative**: "Snowflake combines AWS Location Service data with H3 geospatial indexing and ML.FORECAST to optimize Philippine bank branch networks — identifying underserved areas, predicting demand, and recommending optimal new branch locations"
-**Demo Mode**: Open app with `?demo=true` for presenter notes
+# Branch Network Optimization & Demand Forecasting
 
----
+**Philippines - Banking & Insurance**
+Use case: Branch Network Optimization
 
-## Two Personas
+> Philippine banks operate 12,000+ branches serving 55M banked Filipinos — Snowflake uses H3 geospatial + ST_WITHIN to identify underserved areas, ML.FORECAST to predict branch demand, and optimize branch network expansion.
 
-| Persona | Role | Tool | What they care about |
-|---|---|---|---|
-| **Conchita Maria Yuchengco** | EVP Branch Banking | React App (SPCS) | Branch profitability, network expansion ROI, market coverage, digital migration |
-| **Alejandro Luis Aboitiz** | Network Planning Director | Amazon QuickSight | Location analytics, catchment areas, competitor density, foot traffic patterns |
+## Why Snowflake
 
----
+Snowflake combines AWS Location Service data with H3 geospatial indexing and ML.FORECAST to optimize Philippine bank branch networks — identifying underserved areas, predicting demand, and recommending optimal new branch locations
 
-## What's Built
+- **H3 geospatial + ST_WITHIN for catchment analysis** - Only demo using Snowflake H3 functions for bank branch location optimization
+- **ML.FORECAST for branch demand prediction** - Native forecasting for branch transaction volumes without SageMaker
+- **ML.CLASSIFICATION for branch viability scoring** - Predicts whether proposed branch will be profitable within 2 years
+- **Competitor density overlay** - 4,200 competitor branches mapped and analyzed via geospatial SQL
+- **Philippine banking geography** - 7,641 islands, 55M banked/51M unbanked, with BSP branch requirements
+- **Location Service foot traffic integration** - Real foot traffic data enriching branch analytics
 
-| Layer | Component | Detail |
+## What is deployed
+
+| | |
+|---|---|
+| Database | `PH_BANKING_BRANCH` |
+| Service | `PH_BANKING_BRANCH_APP` |
+| Compute pool | `SEA_DEMOS_PHILIPPINES_POOL` |
+| Dimension table | `RAW.BSP_BANKING_DATA` (20 rows) |
+| Fact table | `RAW.TRANSACTIONS` (250,000 rows, 90 days) |
+| Curated layer | `CURATED.PERFORMANCE_SUMMARY`, `CURATED.TREND_ANALYSIS`, `CURATED.KPI_SUMMARY` |
+| Currency | PHP (₱) |
+
+Regions in play: Metro Manila, Cebu, Davao, Pampanga, Iloilo
+Segments: Metro Flagship, Provincial Branch, In-Store Kiosk, Micro Branch
+
+Dynamic tables are created suspended and refreshed on demand:
+
+```bash
+./refresh_demo_data.sh PH_BANKING_BRANCH
+```
+
+## KPI cards
+
+Every card below is served live from `CURATED.KPI_SUMMARY`. The app keeps the
+original literal as a fallback, so it still renders if Snowflake is unreachable.
+
+| Card | Value | Backed by |
 |---|---|---|
-| **RAW** | 7 tables | BRANCHES (850), COMPETITOR_BRANCHES (4200), TRANSACTIONS (12000000), POPULATION_GRID (45000), FOOT_TRAFFIC (2800000), BRANCH_FINANCIALS (5100), BSP_BANKING_DATA (82) |
-| **CURATED** | 4 Dynamic Tables | BRANCH_PERFORMANCE, CATCHMENT_ANALYSIS, DEMAND_TIMESERIES, EXPANSION_CANDIDATES |
-| **ML** | ML.FORECAST + ML.CLASSIFICATION | Forecasting + anomaly detection |
-| **AI** | COMPLETE, AI_CLASSIFY | Classification + extraction |
-| **Search** | Cortex Search | 82 documents indexed |
-| **Agent** | BRANCH_INTELLIGENCE_AGENT | Semantic View + Search tools |
+| Branch Revenue | `₱4.2B` | total across Bsp Banking Data |
+| Digital Adoption | `67%` | average per event |
+| NPS Score | `72` | average per event |
+| Branches Active | `847` | total across Bsp Banking Data |
+| Mobile Banking Users | `4.2M` | total across Bsp Banking Data |
+| Branch-to-Digital Shift | `+14%` | average per event |
+| Cost per Transaction | `₱42` | total across Bsp Banking Data |
 
 
----
+## Demo flow
 
-## The Story
+1. Executive Cockpit
+2. Coverage Analysis
+3. Demand & ROI
+4. Ask AI
+5. Architecture & Data
 
-Philippine banking is a tale of two markets: 55 million banked Filipinos clustered in NCR and Cebu, and 51 million unbanked across provinces. A mid-tier universal bank operates 850 branches but faces a strategic dilemma — 124 branches are losing money while 15 provinces have no bank presence at all. Geospatial intelligence with H3 and demand forecasting with ML.FORECAST reveals exactly where to expand, consolidate, or transform.
+## Talking points
 
----
+- **850 branches** - serving 4.2M customers nationwide
+- **124 branches** - underperforming (negative ROI)
+- **15 provinces** - with 500K+ population and zero branch presence
+- **16 of 20** - proposed branches predicted profitable within 2 years
+- **62%** - of Filipino population within 5km of a bank branch
+- **₱18M** - average annual revenue per branch
 
-## Script
+## Business impact
 
-### [0:00–0:45] EXECUTIVE COCKPIT
-
-**Show**: Executive Cockpit tab
-
-> "850 branches serving 4.2M customers — average branch generates ₱18M annual revenue."
-
-**Action**: Point at 850 branches on national map
-
-### [0:45–1:30] COVERAGE ANALYSIS
-
-**Show**: Coverage Analysis tab
-
-> "H3 hexagonal analysis: 62% of Filipino population is within 5km of a bank branch."
-
-**Action**: Show H3 coverage heatmap
-
-### [1:30–2:15] DEMAND & ROI
-
-**Show**: Demand & ROI tab
-
-> "ML.FORECAST predicts: Pampanga branches will grow 14% in transactions next year."
-
-**Action**: Show demand forecast for Pampanga
-
-### [2:15–3:00] ASK AI
-
-**Show**: Ask AI tab
-
-> "Conchita asks: 'What's the projected revenue for a branch in San Fernando, Pampanga?'"
-
-**Action**: Type: 'Projected revenue for San Fernando branch?'
-
-### [3:00–3:45] ARCHITECTURE & DATA
-
-**Show**: Architecture & Data tab
-
-> "Location Service → H3 aggregation → catchment analysis → ML.FORECAST → expansion scoring."
-
-**Action**: Walk through architecture diagram
-
+- Philippine banking sector assets reached ₱22.4 trillion in 2023 (BSP)
+- 51 million Filipino adults remain unbanked — largest financial inclusion gap in ASEAN (BSP Financial Inclusion Survey)
+- Geospatial analytics improves branch location ROI by 30-50% (McKinsey Banking)
+- Digital-first branch formats reduce operating costs 40-60% vs traditional branches (Deloitte Banking)
 
 ---
-
-## Key Demo Differentiators
-
-1. **H3 geospatial + ST_WITHIN for catchment analysis** — Only demo using Snowflake H3 functions for bank branch location optimization
-2. **ML.FORECAST for branch demand prediction** — Native forecasting for branch transaction volumes without SageMaker
-3. **ML.CLASSIFICATION for branch viability scoring** — Predicts whether proposed branch will be profitable within 2 years
-4. **Competitor density overlay** — 4,200 competitor branches mapped and analyzed via geospatial SQL
-5. **Philippine banking geography** — 7,641 islands, 55M banked/51M unbanked, with BSP branch requirements
-6. **Location Service foot traffic integration** — Real foot traffic data enriching branch analytics
-
-
----
-
-## Demo Prep Checklist
-
-### Data Verification
-- [ ] `SELECT COUNT(*) FROM BRANCH_NETWORK.RAW.BRANCHES` → 850
-- [ ] `SELECT COUNT(*) FROM BRANCH_NETWORK.RAW.TRANSACTIONS` → 12000000
-- [ ] `SELECT COUNT(*) FROM BRANCH_NETWORK.CURATED.BRANCH_PERFORMANCE WHERE ROI_PCT < 0` → 124
-
-### ML Model Verification
-- [ ] `SELECT COUNT(*) FROM BRANCH_NETWORK.ML.BRANCH_DEMAND_FORECAST_RESULTS` → >0
-- [ ] `SELECT COUNT(*) FROM BRANCH_NETWORK.ML.BRANCH_VIABILITY_RESULTS WHERE PROFITABLE_WITHIN_2Y = TRUE` → 16
-
-### AI/Agent Verification
-- [ ] `SELECT COUNT(DISTINCT OPTIMIZATION_CATEGORY) FROM BRANCH_NETWORK.AI.BRANCH_CLASSIFICATION` → 4
-
+Generated from `generator/demo_specs/aws-philippines-banking-branch.json`. Do not hand-edit: run
+`python3 generator/gen_repo_docs.py aws-philippines-banking-branch` instead.
